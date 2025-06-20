@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spend a Billionaire's Money</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    .balance {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .item {
+      display: flex;
+      align-items: center;
+      margin: 10px auto;
+      padding: 10px;
+      background: white;
+      max-width: 600px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .item button {
+      padding: 10px;
+      background: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .item button:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>Spend a Billionaire's Money</h1>
+  <div class="balance" id="balance">Balance: ₹100,00,00,00,000</div>
+  <div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/IPhone_15_Pro.jpg" alt="iPhone" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>iPhone</strong> - ₹150,000<br>
+    Quantity: <span id="qty-0">0</span>
+  </div>
+  <button onclick="buy(150000, 'qty-0')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Lamborghini_Aventador_LP700-4.jpg" alt="Lamborghini Car" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>Lamborghini Car</strong> - ₹30,000,000<br>
+    Quantity: <span id="qty-1">0</span>
+  </div>
+  <button onclick="buy(30000000, 'qty-1')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Private_jet.jpg" alt="Private Jet" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>Private Jet</strong> - ₹5,000,000,000<br>
+    Quantity: <span id="qty-2">0</span>
+  </div>
+  <button onclick="buy(5000000000, 'qty-2')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Taj-Mahal.jpg" alt="Taj Mahal" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>Taj Mahal</strong> - ₹100,000,000,000<br>
+    Quantity: <span id="qty-3">0</span>
+  </div>
+  <button onclick="buy(100000000000, 'qty-3')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Soccer_ball.svg" alt="Football Club" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>Football Club</strong> - ₹8,000,000,000<br>
+    Quantity: <span id="qty-4">0</span>
+  </div>
+  <button onclick="buy(8000000000, 'qty-4')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Big_Mac_hamburger.jpg" alt="Big Mac" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>Big Mac</strong> - ₹300<br>
+    Quantity: <span id="qty-5">0</span>
+  </div>
+  <button onclick="buy(300, 'qty-5')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Year of Netflix" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>Year of Netflix</strong> - ₹6,000<br>
+    Quantity: <span id="qty-6">0</span>
+  </div>
+  <button onclick="buy(6000, 'qty-6')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/0/00/Drone_with_camera.jpg" alt="Drone Gaming Console" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>Drone Gaming Console</strong> - ₹200,000<br>
+    Quantity: <span id="qty-7">0</span>
+  </div>
+  <button onclick="buy(200000, 'qty-7')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Farmland.jpg" alt="Acre of Farmland" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>Acre of Farmland</strong> - ₹1,500,000<br>
+    Quantity: <span id="qty-8">0</span>
+  </div>
+  <button onclick="buy(1500000, 'qty-8')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Rolex_Submariner.jpg" alt="Rolex" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>Rolex</strong> - ₹600,000<br>
+    Quantity: <span id="qty-9">0</span>
+  </div>
+  <button onclick="buy(600000, 'qty-9')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/F1_Car.jpg" alt="Formula 1 Car" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>Formula 1 Car</strong> - ₹150,000,000<br>
+    Quantity: <span id="qty-10">0</span>
+  </div>
+  <button onclick="buy(150000000, 'qty-10')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Apache_helicopter.jpg" alt="Apache Helicopter" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>Apache Helicopter</strong> - ₹2,000,000,000<br>
+    Quantity: <span id="qty-11">0</span>
+  </div>
+  <button onclick="buy(2000000000, 'qty-11')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Movie_clapper_board.jpg" alt="Make a Movie" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>Make a Movie</strong> - ₹500,000,000<br>
+    Quantity: <span id="qty-12">0</span>
+  </div>
+  <button onclick="buy(500000000, 'qty-12')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Skyscraper_in_Shanghai.jpg" alt="Skyscraper" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>Skyscraper</strong> - ₹7,500,000,000<br>
+    Quantity: <span id="qty-13">0</span>
+  </div>
+  <button onclick="buy(7500000000, 'qty-13')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Basketball.png" alt="NBA Team" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>NBA Team</strong> - ₹25,000,000,000<br>
+    Quantity: <span id="qty-14">0</span>
+  </div>
+  <button onclick="buy(25000000000, 'qty-14')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Cruise_ship.jpg" alt="Cruise Ship" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>Cruise Ship</strong> - ₹3,000,000,000<br>
+    Quantity: <span id="qty-15">0</span>
+  </div>
+  <button onclick="buy(3000000000, 'qty-15')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Ticket.svg" alt="Movie Ticket" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>Movie Ticket</strong> - ₹300<br>
+    Quantity: <span id="qty-16">0</span>
+  </div>
+  <button onclick="buy(300, 'qty-16')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Air_Jordan_1_Retro_High.jpg" alt="Air Jordan's" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>Air Jordan's</strong> - ₹15,000<br>
+    Quantity: <span id="qty-17">0</span>
+  </div>
+  <button onclick="buy(15000, 'qty-17')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Apple_AirPods_Pro.jpg" alt="AirPods" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>AirPods</strong> - ₹20,000<br>
+    Quantity: <span id="qty-18">0</span>
+  </div>
+  <button onclick="buy(20000, 'qty-18')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Horse.jpg" alt="Horse" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>Horse</strong> - ₹1,000,000<br>
+    Quantity: <span id="qty-19">0</span>
+  </div>
+  <button onclick="buy(1000000, 'qty-19')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Designer_handbag.jpg" alt="Designer Handbag" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>Designer Handbag</strong> - ₹500,000<br>
+    Quantity: <span id="qty-20">0</span>
+  </div>
+  <button onclick="buy(500000, 'qty-20')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Diamond_ring.jpg" alt="Diamond Ring" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>Diamond Ring</strong> - ₹1,000,000<br>
+    Quantity: <span id="qty-21">0</span>
+  </div>
+  <button onclick="buy(1000000, 'qty-21')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Jet_ski.jpg" alt="Jet Ski" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>Jet Ski</strong> - ₹1,200,000<br>
+    Quantity: <span id="qty-22">0</span>
+  </div>
+  <button onclick="buy(1200000, 'qty-22')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Monster_truck.jpg" alt="Monster Truck" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>Monster Truck</strong> - ₹20,000,000<br>
+    Quantity: <span id="qty-23">0</span>
+  </div>
+  <button onclick="buy(20000000, 'qty-23')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Ferrari_F8_Tributo.jpg" alt="Ferrari" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>Ferrari</strong> - ₹40,000,000<br>
+    Quantity: <span id="qty-24">0</span>
+  </div>
+  <button onclick="buy(40000000, 'qty-24')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Single_family_home.jpg" alt="Single Family Home" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>Single Family Home</strong> - ₹8,000,000<br>
+    Quantity: <span id="qty-25">0</span>
+  </div>
+  <button onclick="buy(8000000, 'qty-25')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Gold_ingot.jpg" alt="Gold Bar" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>Gold Bar</strong> - ₹5,000,000<br>
+    Quantity: <span id="qty-26">0</span>
+  </div>
+  <button onclick="buy(5000000, 'qty-26')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/McDonalds.jpg" alt="McDonald's Franchise" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>McDonald's Franchise</strong> - ₹300,000,000<br>
+    Quantity: <span id="qty-27">0</span>
+  </div>
+  <button onclick="buy(300000000, 'qty-27')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Yacht.jpg" alt="Yacht" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>Yacht</strong> - ₹700,000,000<br>
+    Quantity: <span id="qty-28">0</span>
+  </div>
+  <button onclick="buy(700000000, 'qty-28')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/M1_Abrams_tank.jpg" alt="M1 Abrams" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>M1 Abrams</strong> - ₹600,000,000<br>
+    Quantity: <span id="qty-29">0</span>
+  </div>
+  <button onclick="buy(600000000, 'qty-29')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Boeing_747.jpg" alt="Boeing 747" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>Boeing 747</strong> - ₹1,400,000,000<br>
+    Quantity: <span id="qty-30">0</span>
+  </div>
+  <button onclick="buy(1400000000, 'qty-30')">Buy</button>
+</div>
+<div class="item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Mona_Lisa.jpg" alt="Mona Lisa" style="width:80px; height:80px; border-radius:8px; margin-right:10px;">
+  <div style="flex-grow:1; text-align:left;">
+    <strong>Mona Lisa</strong> - ₹8,500,000,000<br>
+    Quantity: <span id="qty-31">0</span>
+  </div>
+  <button onclick="buy(8500000000, 'qty-31')">Buy</button>
+</div>
+  <script>
+    let balance = 100000000000;
+
+    function formatMoney(amount) {
+      return '₹' + amount.toLocaleString('en-IN');
+    }
+
+    function buy(cost, qtyId) {
+      if (balance >= cost) {
+        balance -= cost;
+        const qtyElem = document.getElementById(qtyId);
+        qtyElem.innerText = parseInt(qtyElem.innerText) + 1;
+        document.getElementById('balance').innerText = 'Balance: ' + formatMoney(balance);
+      } else {
+        alert('Itna paisa nahi hai!');
+      }
+    }
+  </script>
+</body>
+</html>
